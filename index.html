@@ -73,8 +73,16 @@
         .retake-btn { background: #ff0037; }
         .save-btn { background: #333; }
 
-        /* --- Why I Love You --- */
-        .love-reason-box { background: white; padding: 40px; border-radius: 20px; max-width: 600px; margin: 30px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none; }
+        /* --- Why I Love You (ENHANCED) --- */
+        .love-reason-box { 
+            background: white; padding: 50px; border-radius: 30px; 
+            max-width: 700px; margin: 40px auto; 
+            box-shadow: 0 15px 40px rgba(255, 0, 55, 0.1); 
+            display: none; border: 2px solid #fff0f3;
+            font-family: 'Dancing Script', cursive; font-size: 1.6rem; 
+            line-height: 1.8; color: #444; position: relative;
+        }
+        .love-reason-box::before { content: "💖"; position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 3rem; }
 
         /* --- Open When Letters --- */
         .letters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; max-width: 1000px; margin: 40px auto; }
@@ -236,9 +244,9 @@
         <section>
             <h2 class="script-title">Why I Love You</h2>
             <p>Click below to find out...</p>
-            <button class="yes-btn" onclick="document.getElementById('love-reason').style.display='block'">❤️ Click to Feel Loved</button>
+            <button class="yes-btn" onclick="showLoveReason()">❤️ Click to Feel Loved</button>
             <div id="love-reason" class="love-reason-box">
-                "I love you because you make even the simplest moments feel meaningful. Your presence brings calm to my chaos, warmth to my heart, and a smile to my face without any effort."
+                My dearest Appii 💖, looking back at where we started on that August day in 2022 🗓️, I realize that falling for you was the best thing I ever did. You aren't just my girlfriend; you are my peace 🕊️, my laughter 😂, and my safe haven in this chaotic world 🌍.<br><br>I love you for the memories we've created 📸, for the way you understand my silence 🤫, and for the way you make even ordinary days feel magical ✨. But more than the past, I love you for our future 🚀—for the thousands of sunsets we haven’t seen yet 🌅, the road trips we haven’t taken 🚗, and the life we are going to build together 🏡.<br><br>You are my yesterday, my today, and my forever ♾️. I promise to annoy you 🤪, support you 🤝, and love you endlessly until the very end of time. ❤️🥰
             </div>
         </section>
 
@@ -300,7 +308,6 @@
                 document.getElementById('vault-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'flex';
                 document.getElementById('music-ui').style.opacity = '1'; 
-                // Play your custom song
                 document.getElementById('bg-music').play().catch(error => console.log("User interaction needed for audio")); 
                 confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ff0037', '#ffffff'] });
                 startTimer(); startCountdown();
@@ -498,7 +505,14 @@
             document.getElementById('msg-modal').style.display = 'flex';
         }
         function closeModal() { document.getElementById('msg-modal').style.display = 'none'; }
+        
         function showerLove() { confetti({ particleCount: 100, spread: 70, origin: { y: 0.8 }, colors: ['#ff0037'] }); }
+        
+        function showLoveReason() {
+            document.getElementById('love-reason').style.display = 'block';
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#ff0037', '#ffffff'] });
+        }
+
         function moveButton(btn) { btn.style.position = 'absolute'; btn.style.top = Math.random()*80 + '%'; btn.style.left = Math.random()*80 + '%'; }
         
         // --- NEW FINAL CONFIRMATION LOGIC ---
